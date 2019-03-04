@@ -10,8 +10,8 @@ import Foundation
 
 enum API {
     
-    static var  lat = 0
-    static var long = 0
+    static var  lat = ""
+    static var long = ""
     static let APIKey = "846cd708c029b2a5c0be9214bf2943c7"
     static let baseURL = URL(string: "https://api.darksky.net/forecast")!
     

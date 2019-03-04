@@ -33,9 +33,9 @@ class ViewController: UIViewController {
         
         activityIndicatorView.startAnimating()
         
-        API.lat = Int(37.8267)
-        API.long = Int(-122.4233)
-        
+        API.lat = latitudeTxtField.text!
+        API.long = logitudeTxtField.text!
+    
         viewModel.currentTemperature { [unowned self] (temperature) in
             
             self.temperatureLabel.text = temperature
