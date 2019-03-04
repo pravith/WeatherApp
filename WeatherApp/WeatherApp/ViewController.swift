@@ -10,11 +10,45 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var latitudeTxtField: UITextField!
+    @IBOutlet var logitudeTxtField: UITextField!
+    @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var fetchWeatherDataButton: UIButton!
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    
+    private let viewModel = WeatherViewViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        activityIndicatorView.hidesWhenStopped = true
+        
     }
-
-
+    private func fetchWeatherData() {
+        
+        activityIndicatorView.isHidden = false
+        
+        temperatureLabel.isHidden = true
+        fetchWeatherDataButton.isHidden = true
+        
+        activityIndicatorView.startAnimating()
+        
+        API.lat = Int(37.8267)
+        API.long = Int(-122.4233)
+        
+        viewModel.currentTemperature { [unowned self] (temperature) in
+            
+            self.temperatureLabel.text = temperature
+            self.temperatureLabel.isHidden = false
+            
+            self.fetchWeatherDataButton.isHidden = false
+            self.activityIndicatorView.stopAnimating()
+        }
+    }
+    @IBAction func fetchWeatherData(_ sender: Any) {
+        fetchWeatherData()
+    }
 }
+
+
 
