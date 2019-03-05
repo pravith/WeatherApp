@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  WeatherApp
 //
-//  Created by Arun PK on 3/4/19.
+//  Created by pravith on 3/4/19.
 //  Copyright © 2019 pravith. All rights reserved.
 //
 

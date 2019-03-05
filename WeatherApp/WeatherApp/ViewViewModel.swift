@@ -2,12 +2,13 @@
 //  ViewViewModel.swift
 //  WeatherApp
 //
-//  Created by Arun PK on 3/4/19.
+//  Created by pravith on 3/4/19.
 //  Copyright © 2019 pravith. All rights reserved.
 //
 
 import Foundation
 
+// MARK: - API
 enum API {
     
     static var  lat = ""
@@ -24,6 +25,7 @@ enum API {
 
 class WeatherViewViewModel {
     
+    // MARK: - Type Alias
     typealias   CurrentTemperatureCompletion = (String) -> Void
     
     func currentTemperature(completion: @escaping CurrentTemperatureCompletion) {
@@ -42,6 +44,8 @@ class WeatherViewViewModel {
         }
         dataTask.resume()
     }
+    
+    //Retreving the current temperature
     func temperature(from data: Data) -> String? {
         
         guard let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
