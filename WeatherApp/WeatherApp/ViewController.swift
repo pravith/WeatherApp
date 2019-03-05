@@ -22,8 +22,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         activityIndicatorView.hidesWhenStopped = true
-        
     }
+    
     private func fetchWeatherData() {
         
         activityIndicatorView.isHidden = false

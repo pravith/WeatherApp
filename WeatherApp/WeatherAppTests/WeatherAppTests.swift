@@ -47,23 +47,19 @@ class WeatherAppTests: XCTestCase {
         let _ = login.view
         XCTAssertEqual("Longitude", login.logitudeTxtField!.placeholder!)
     }
-    // Asynchronous test: success fast, failure slow
+    
+    // Fuctional Test:Asynchronous test for API reachable or not
     func testValidCallToiTunesGetsHTTPStatusCode200() {
-        // given
-        let url = URL(string: "https://itunes.apple.com/search?media=music&entity=song&term=abba")
-        // 1
+        let url = URL(string: "https://darksky.net/forecast/40.7127,-74.0059/us12/en")
         let promise = expectation(description: "Status code: 200")
         
-        // when
         let dataTask = sessionUnderTest.dataTask(with: url!) { data, response, error in
-            // then
             
             if let error = error {
                 XCTFail("Error: \(error.localizedDescription)")
                 return
             } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if statusCode == 200 {
-                    // 2
                     promise.fulfill()
                 } else {
                     XCTFail("Status code: \(statusCode)")
@@ -71,7 +67,6 @@ class WeatherAppTests: XCTestCase {
             }
         }
         dataTask.resume()
-        // 3
         waitForExpectations(timeout: 5, handler: nil)
     }
     
@@ -79,7 +74,6 @@ class WeatherAppTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
